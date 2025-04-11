@@ -1,0 +1,222 @@
+[
+    {
+        "prompt": "0.0,0.0,1293.0, What is the next hour production?",
+        "completion": "-15.654997,18.01997,929.3621"
+    },
+    {
+        "prompt": "0.0,0.0,1482.75, What is the next hour production?",
+        "completion": "55.085716,-18.57641,883.3951"
+    },
+    {
+        "prompt": "0.0,0.0,1320.0, What is the next hour production?",
+        "completion": "401.7541,-10.703396,486.29324"
+    },
+    {
+        "prompt": "0.0,0.0,634.5, What is the next hour production?",
+        "completion": "473.10797,-46.06514,317.83267"
+    },
+    {
+        "prompt": "0.0,0.0,1241.0, What is the next hour production?",
+        "completion": "568.5964,-167.63599,203.62463"
+    },
+    {
+        "prompt": "0.0,0.0,1257.5, What is the next hour production?",
+        "completion": "177.93758,-71.05085,360.56934"
+    },
+    {
+        "prompt": "0.0,0.0,611.0, What is the next hour production?",
+        "completion": "488.31097,-35.192406,325.43536"
+    },
+    {
+        "prompt": "0.0,0.0,307.25, What is the next hour production?",
+        "completion": "-32.36982,-21.70027,881.95795"
+    },
+    {
+        "prompt": "0.0,0.0,610.0, What is the next hour production?",
+        "completion": "176.08058,-24.232481,697.9652"
+    },
+    {
+        "prompt": "0.0,0.0,610.0, What is the next hour production?",
+        "completion": "-46.32141,-18.390442,869.893"
+    },
+    {
+        "prompt": "0.0,0.0,485.0, What is the next hour production?",
+        "completion": "344.3331,-23.833193,495.198"
+    },
+    {
+        "prompt": "0.0,0.0,381.3, What is the next hour production?",
+        "completion": "167.89659,49.6795,355.37125"
+    },
+    {
+        "prompt": "0.0,0.0,618.75, What is the next hour production?",
+        "completion": "443.11877,4.123213,502.28412"
+    },
+    {
+        "prompt": "0.0,0.0,642.0, What is the next hour production?",
+        "completion": "631.5335,40.49189,325.94656"
+    },
+    {
+        "prompt": "610.0,0.0,0.0, What is the next hour production?",
+        "completion": "678.0168,5.8025894,256.65005"
+    },
+    {
+        "prompt": "1220.0,0.0,0.0, What is the next hour production?",
+        "completion": "722.20514,2.4241438,31.960926"
+    },
+    {
+        "prompt": "1076.25,0.0,0.0, What is the next hour production?",
+        "completion": "692.8519,77.012535,286.6028"
+    },
+    {
+        "prompt": "0.0,1229.75,0.0, What is the next hour production?",
+        "completion": "291.42508,-150.84111,1052.048"
+    },
+    {
+        "prompt": "0.0,0.0,1969.25, What is the next hour production?",
+        "completion": "190.62701,334.0313,559.44037"
+    },
+    {
+        "prompt": "0.0,0.0,1820.0, What is the next hour production?",
+        "completion": "-27.950867,-275.91025,2164.8901"
+    },
+    {
+        "prompt": "0.0,0.0,1220.0, What is the next hour production?",
+        "completion": "483.89664,171.886,51.586002"
+    },
+    {
+        "prompt": "0.0,0.0,1255.5, What is the next hour production?",
+        "completion": "-466.38995,-109.09399,1526.7153"
+    },
+    {
+        "prompt": "0.0,0.0,626.5, What is the next hour production?",
+        "completion": "483.6402,15.687958,502.15002"
+    },
+    {
+        "prompt": "0.0,0.0,1226.0, What is the next hour production?",
+        "completion": "-176.07848,-251.81735,956.0153"
+    },
+    {
+        "prompt": "0.0,0.0,1244.25, What is the next hour production?",
+        "completion": "116.96668,595.4783,428.12057"
+    },
+    {
+        "prompt": "0.0,0.0,1135.75, What is the next hour production?",
+        "completion": "160.94527,688.83997,223.13722"
+    },
+    {
+        "prompt": "0.0,0.0,1424.9999999999998, What is the next hour production?",
+        "completion": "190.76405,324.01163,235.46938"
+    },
+    {
+        "prompt": "152.5,0.0,306.0, What is the next hour production?",
+        "completion": "172.58063,80.75461,299.74127"
+    },
+    {
+        "prompt": "0.0,0.0,610.0, What is the next hour production?",
+        "completion": "219.33128,51.468323,897.604"
+    },
+    {
+        "prompt": "0.0,0.0,613.0, What is the next hour production?",
+        "completion": "286.34467,6.6265707,703.8806"
+    },
+    {
+        "prompt": "0.0,0.0,1249.0, What is the next hour production?",
+        "completion": "286.92844,21.543306,871.6785"
+    },
+    {
+        "prompt": "0.0,0.0,620.25, What is the next hour production?",
+        "completion": "321.91116,-2.7136362,761.3469"
+    },
+    {
+        "prompt": "0.0,0.0,960.75, What is the next hour production?",
+        "completion": "326.28265,6.0825443,544.0465"
+    },
+    {
+        "prompt": "0.0,1220.0,0.0, What is the next hour production?",
+        "completion": "326.1329,-34.63807,452.2821"
+    },
+    {
+        "prompt": "0.0,610.0,0.0, What is the next hour production?",
+        "completion": "480.83386,-113.81877,-37.33207"
+    },
+    {
+        "prompt": "0.0,1211.0,0.0, What is the next hour production?",
+        "completion": "330.0831,-27.984375,597.6501"
+    },
+    {
+        "prompt": "2097.0,0.0,0.0, What is the next hour production?",
+        "completion": "476.43454,-31.152504,-140.98819"
+    },
+    {
+        "prompt": "920.0,0.0,0.0, What is the next hour production?",
+        "completion": "1110.1544,85.51083,-50.49198"
+    },
+    {
+        "prompt": "0.0,0.0,2772.5, What is the next hour production?",
+        "completion": "71.31982,251.08186,733.5619"
+    },
+    {
+        "prompt": "0.0,0.0,614.0, What is the next hour production?",
+        "completion": "-47.56055,-20.76252,922.8207"
+    },
+    {
+        "prompt": "0.0,0.0,1226.0, What is the next hour production?",
+        "completion": "127.551605,-72.980804,1099.2024"
+    },
+    {
+        "prompt": "0.0,0.0,1318.75, What is the next hour production?",
+        "completion": "118.667656,23.49361,429.44452"
+    },
+    {
+        "prompt": "0.0,0.0,1294.5, What is the next hour production?",
+        "completion": "-88.22455,46.458263,889.0738"
+    },
+    {
+        "prompt": "0.0,0.0,629.5, What is the next hour production?",
+        "completion": "162.17912,14.169559,828.0448"
+    },
+    {
+        "prompt": "0.0,0.0,1240.5, What is the next hour production?",
+        "completion": "317.4275,161.97775,352.9021"
+    },
+    {
+        "prompt": "0.0,0.0,1268.0, What is the next hour production?",
+        "completion": "-182.34807,149.85031,566.10077"
+    },
+    {
+        "prompt": "0.0,0.0,655.25, What is the next hour production?",
+        "completion": "-156.80937,833.3538,377.52975"
+    },
+    {
+        "prompt": "0.0,0.0,1291.0, What is the next hour production?",
+        "completion": "66.077545,414.4781,391.59555"
+    },
+    {
+        "prompt": "0.0,0.0,787.4999999999999, What is the next hour production?",
+        "completion": "-52.67971,158.13136,461.52036"
+    },
+    {
+        "prompt": "0.0,0.0,614.75, What is the next hour production?",
+        "completion": "-39.317947,72.02041,565.24475"
+    },
+    {
+        "prompt": "0.0,0.0,1252.0, What is the next hour production?",
+        "completion": "242.21548,66.639626,819.3297"
+    },
+    {
+        "prompt": "0.0,0.0,1220.0, What is the next hour production?",
+        "completion": "388.90094,39.137848,614.5841"
+    },
+    {
+        "prompt": "0.0,0.0,610.0, What is the next hour production?",
+        "completion": "276.6708,28.63527,790.3687"
+    },
+    {
+        "prompt": "0.0,611.0,0.0, What is the next hour production?",
+        "completion": "497.3967,-15.436325,269.13593"
+    },
+    {
+        "prompt": "0.0,459.0,0.0, What is the next hour production?",
+        "completion": "493.3323,-141.77899,74.37461"
+    }
+]
