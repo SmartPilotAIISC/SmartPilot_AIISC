@@ -66,7 +66,7 @@ ns = {
 }
 
 if "ProcessOntologyQa" not in st.session_state:
-    st.session_state["ProcessOntologyQa"] = ProcessOntologyQA("/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Agent 3: InfoGuide/src/assets/d3_graph.json")
+    st.session_state["ProcessOntologyQa"] = ProcessOntologyQA("/Users/ledarssan/AIISC/CCN_models/SMP-Deploy/SmartPilot_AIISC/Agent 3: InfoGuide/src/assets/d3_graph.json")
 
 def get_full_entity_semantic_info(entity_name: str, ontology_json: dict):
 
@@ -850,8 +850,8 @@ def run_diffan():
 
     # Define paths
     diffan_script_path = "/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Agent 3: InfoGuide/src/DiffAN/swat_viz.py"
-    diffan_output_dir = "/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Agent 3: InfoGuide/src/DiffAN/"
-    new_dataset_path = "/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Agent 3: InfoGuide/src/uploaded_dataset.csv"  # ✅ Absolute Path
+    diffan_output_dir = "/Users/ledarssan/AIISC/CCN_models/SMP-Deploy/SmartPilot_AIISC/Agent 3: InfoGuide/src/DiffAN"
+    new_dataset_path = "/Users/ledarssan/AIISC/CCN_models/SMP-Deploy/SmartPilot_AIISC/Agent 3: InfoGuide/src/uploaded_dataset.csv"  # ✅ Absolute Path
     modified_diffan_script = os.path.join(diffan_output_dir, "modified_diffan.py")
 
     # ✅ Expected output files
@@ -1040,7 +1040,7 @@ with st.sidebar:
             st.warning("Run causal discovery first.")
         else:
             df = st.session_state["uploaded_data"]
-            sensor_ranges = parse_sensor_ranges("/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Agent 3: InfoGuide/src/assets/sensor_cycle_ranges.txt")
+            sensor_ranges = parse_sensor_ranges("/Users/ledarssan/AIISC/CCN_models/SMP-Deploy/SmartPilot_AIISC/Agent 3: InfoGuide/src/assets/sensor_cycle_ranges.txt")
             rca_results = analyze_all(df, sensor_ranges, total_effects, node_labels)
 
             st.session_state["rca_results"] = rca_results
@@ -1102,11 +1102,11 @@ if st.session_state["selected_question"] == "Upload your dataset":
     # Sample Dataset Buttons
     st.subheader("📊 Or Try a Sample Dataset")
     col1, col2 = st.columns(2)
-    dest_path = "/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Agent 3: InfoGuide/src/uploaded_dataset.csv"
+    dest_path = "/Users/ledarssan/AIISC/CCN_models/SMP-Deploy/SmartPilot_AIISC/Agent 3: InfoGuide/src/uploaded_dataset.csv"
 
     with col1:
         if st.button("📎 Secure Water Treatment (SWaT) Dataset"):
-            sample_path = "/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Sample datasets/swat_sample.csv"
+            sample_path = "/Users/ledarssan/AIISC/CCN_models/SMP-Deploy/SmartPilot_AIISC/Sample datasets/swat_sample.csv"
             try:
                 shutil.copy(sample_path, dest_path)
                 st.session_state["uploaded_data"] = pd.read_csv(sample_path)
@@ -1118,7 +1118,7 @@ if st.session_state["selected_question"] == "Upload your dataset":
 
     with col2:
         if st.button("📎 Future Factories (FF) Analog Dataset "):
-            sample_path = "/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Sample datasets/FF_test_sample.csv"
+            sample_path = "/Users/ledarssan/AIISC/CCN_models/SMP-Deploy/SmartPilot_AIISC/Sample datasets/FF_test_sample.csv"
             try:
                 shutil.copy(sample_path, dest_path)
                 st.session_state["uploaded_data"] = pd.read_csv(sample_path)

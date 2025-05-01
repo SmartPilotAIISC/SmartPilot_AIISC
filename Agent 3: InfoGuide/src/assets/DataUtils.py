@@ -65,7 +65,7 @@ class AssetLoader:
 
     @staticmethod
     def read_data():
-        with open('/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Agent 3: InfoGuide/src/assets/filtered_manufacturing_text.txt') as f:
+        with open('/Users/ledarssan/AIISC/CCN_models/SMP-Deploy/SmartPilot_AIISC/Agent 3: InfoGuide/src/assets/filtered_manufacturing_text.txt') as f:
             f_lines = f.read().splitlines()
             f_str = ''.join([re.sub(r'[^A-Za-z0-9 ]+', '' ,line) for line in f_lines if re.sub(r'[^A-Za-z0-9 ]+', '' ,line)])
         return f_str
