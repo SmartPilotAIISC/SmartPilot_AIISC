@@ -10,6 +10,7 @@ keras==3.4.1
 efficientnet_pytorch==0.7.1
 flair==0.13.1
 distro==1.9.0
+gensim==4.3.1
 groq==0.8.0
 python-decouple==3.8
 rouge==1.0.1
@@ -21,6 +22,7 @@ datasets
 evaluate
 peft
 streamlit
+scipy==1.10.1
 pyvis
 causal-learn
 git+https://github.com/tomsons22/trustworthyAI.git@c2e3535eba28cabf8e1309f55bffc3e4d4d78c00#subdirectory=gcastle
