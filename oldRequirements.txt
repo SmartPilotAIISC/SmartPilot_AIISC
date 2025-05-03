@@ -1,10 +1,13 @@
+# python==3.9.12
 pandas
-torch==2.2.0
+torch==2.1.2
 pytorch-lightning==2.0.7
 numpy
-scikit-learn
-Pillow
+sklearn
+PIL
 transformers
+csv
+os
 tensorflow==2.16.2
 keras==3.4.1
 efficientnet_pytorch==0.7.1
@@ -16,9 +19,10 @@ rouge==1.0.1
 rouge-score==0.1.2
 nltk==3.8.1
 requests==2.32.3
-beautifulsoup4==4.12.3
+BeautifulSoup4==4.12.3
 datasets
 evaluate
+transformers
 peft
 streamlit
 pyvis
