@@ -24,6 +24,6 @@ rouge-score==0.1.2
 scikit-learn
 seaborn
 streamlit==1.25.0
-tensorflow==2.15.0
+tensorflow-cpu==2.14.0
 torch==2.2.2
 transformers
