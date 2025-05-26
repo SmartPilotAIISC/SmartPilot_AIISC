@@ -23,5 +23,5 @@ rouge-score==0.1.2
 scikit-learn
 seaborn
 streamlit==1.25.0
-torch==2.2.2
+torch==2.7.0
 transformers
