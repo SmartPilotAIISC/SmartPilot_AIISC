@@ -6,7 +6,8 @@ distro==1.9.0
 efficientnet_pytorch==0.7.1
 evaluate
 flair==0.13.1
-git+https://github.com/tomsons22/trustworthyAI.git@c2e3535eba28cabf8e1309f55bffc3e4d4d78c00#subdirectory=gcastle
+# git+https://github.com/tomsons22/trustworthyAI.git@c2e3535eba28cabf8e1309f55bffc3e4d4d78c00#subdirectory=gcastle
+git+https://github.com/SmartPilotAIISC/trustworthyAI.git@master#subdirectory=gcastle
 groq==0.8.0
 nltk==3.8.1
 numpy
