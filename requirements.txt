@@ -1,8 +1,8 @@
 pandas
-torch
+torch==2.2.2
 pytorch-lightning==2.0.7
 numpy
-sklearn
+scikit-learn
 PIL
 transformers
 csv
