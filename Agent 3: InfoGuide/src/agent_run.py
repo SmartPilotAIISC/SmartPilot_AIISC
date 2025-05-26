@@ -8,6 +8,7 @@ from copilots.Agents import LLM
 import pandas as pd
 import os
 
+from sentence_transformers import SentenceTransformer, util
 
 # Initialize session state keys before usage
 if "messages" not in st.session_state:
@@ -22,7 +23,8 @@ if "selected_question" not in st.session_state:
 
 # Load models
 def load_anomaly_prediction_model():
-    model_checkpoint = os.path.join(os.path.dirname(__file__), "..", "..", "Models", "final_best_model_PredictX")
+    # model_checkpoint = os.path.join(os.path.dirname(__file__), "..", "..", "Models", "final_best_model_PredictX")
+    model_checkpoint = "final_best_model"
     tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
     df = pd.read_excel('./LLM_FT_dataset.csv')
     unique_labels = df['predicted_label'].unique().tolist()
@@ -47,7 +49,8 @@ def get_anomaly_prediction(tokenizer, model, id2label, user_query, time_series_d
 
 
 def load_prod_forecasting_model():
-    model_checkpoint = os.path.join(os.path.dirname(__file__), "..", "..", "Models", "final_finetuned_model_ForeSight")
+    # model_checkpoint = os.path.join(os.path.dirname(__file__), "..", "..", "Models", "final_finetuned_model_ForeSight")
+    model_checkpoint = "content/final_finetuned_model"
     tokenizer_f = AutoTokenizer.from_pretrained(model_checkpoint)
     df = pd.read_json('./fine_tune_data_foresight.json')
     unique_labels_f = df['completion'].unique().tolist()
@@ -113,6 +116,65 @@ with st.sidebar:
 st.markdown(
     """
     <style>
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 500px;
+    }
+    .user-bubble {
+        background-color: #73000a;
+        color: white;
+        border: 1px solid #73000a;
+        border-radius: 15px;
+        padding: 10px 20px;
+        max-width: 60%;
+        margin: 10px 0;
+        text-align: left;
+        float: right;
+        clear: both;
+    }
+    .ai-bubble {
+        background-color: #f0f0f0;
+        color: black;
+        border-radius: 15px;
+        padding: 10px 20px;
+        max-width: 60%;
+        margin: 10px 0;
+        text-align: left;
+        float: left;
+        clear: both;
+    }
+    .user-bubble img {
+        position: absolute;
+        top: -10px;
+        right: -50px;
+        width: 30px;
+        height: 30px;
+    }
+    .ai-bubble img {
+        position: absolute;
+        top: -10px;
+        left: -50px;
+        width: 50px;
+        height: 50px;
+    }
+    .chat-container > div {
+        margin-bottom: 20px;
+    }
+    .stButton>button {
+        background-color: #73000a;
+        color: white;
+        border: 2px solid #73000a;
+        border-radius: 12px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .stButton>button:hover {
+        background-color: white;
+        color: #73000a;
+    }
     .selected-question-container {
         position: fixed;
         top: 60px; /* Adjust this if needed */
@@ -128,16 +190,92 @@ st.markdown(
     }
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
 # Display the selected question in a fixed header
-if st.session_state["selected_question"]:
-    st.markdown(f"<div class='selected-question-container'>🔹 Selected Question: {st.session_state['selected_question']}</div>", unsafe_allow_html=True)
+# if st.session_state["selected_question"]:
+#     st.markdown(f"<div class='selected-question-container'>🔹 Selected Question: {st.session_state['selected_question']}</div>", unsafe_allow_html=True)
 
 
 # Chat Input
 user_input = st.chat_input("Enter your question...")
+
+
+# Load Sentence Transformer Model
+sentence_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+
+# Predefined queries for classification
+documentation_queries = [
+    "What are the safety protocols for the manufacturing process?",
+    "How to troubleshoot common issues in the manufacturing pipeline?",
+    "Describe the maintenance procedure for the assembly line machines.",
+    "What are the steps to calibrate the sensors in the manufacturing setup?",
+    "How to perform a quality check on the manufactured toy rockets?",
+    "What materials are needed for the manufacturing process?",
+    "How to store and handle materials safely?",
+    "What are the emergency procedures in case of a malfunction?",
+    "How to document the production cycle for future reference?"
+]
+
+production_forecasting_queries = [
+    "What is the next hour production when current values are 0.0, 0.0, 1482.75?",
+    "0.0,0.0,1482.75, What is the next hour production?"
+]
+
+anomaly_queries = [
+    "What is the anomaly status when sensor values are 594. 355. 500?",
+    "594. 355. 500. ; is there an anomaly in this time?"
+]
+
+# Compute Embeddings for Predefined Queries
+doc_embeddings = sentence_model.encode(documentation_queries, convert_to_tensor=True)
+prod_forecast_embeddings = sentence_model.encode(production_forecasting_queries, convert_to_tensor=True)
+anomaly_embeddings = sentence_model.encode(anomaly_queries, convert_to_tensor=True)
+
+def classify_query(user_query):
+    user_embedding = sentence_model.encode(user_query, convert_to_tensor=True)
+
+    # Compute similarity scores
+    doc_score = max(util.pytorch_cos_sim(user_embedding, doc_embeddings)[0]).item()
+    prod_score = max(util.pytorch_cos_sim(user_embedding, prod_forecast_embeddings)[0]).item()
+    anomaly_score = max(util.pytorch_cos_sim(user_embedding, anomaly_embeddings)[0]).item()
+
+    # Determine highest similarity score
+    scores = {"documentation": doc_score, "production": prod_score, "anomaly": anomaly_score}
+    best_match = max(scores, key=scores.get)
+
+    return best_match, scores[best_match]
+
+# Process User Query
+if user_input:
+    agent, confidence = classify_query(user_input)
+
+    if agent == "anomaly":
+        input_parts = user_input.split(";")
+        time_series_data = input_parts[0].strip().split(",") if len(input_parts) > 1 else ["[0. 0. 0.]"]
+        user_query_text = input_parts[1].strip() if len(input_parts) > 1 else user_input
+        predicted_labels = get_anomaly_prediction(tokenizer, model, id2label, user_query_text, time_series_data)
+        response = f"Predicted anomaly labels: {', '.join(predicted_labels)}"
+
+    elif agent == "production":
+        input_parts = user_input.split(";")
+        time_series_data = input_parts[0].strip().split(",") if len(input_parts) > 1 else ["[0. 0. 0.]"]
+        user_query_text = input_parts[1].strip() if len(input_parts) > 1 else user_input
+        predicted_labels = get_prod_forecast(tokenizer_f, model_f, id2label_f, user_query_text, time_series_data)
+        response = f"Predicted product values: {', '.join(predicted_labels)}"
+
+    else:  # Documentation Agent
+        data = Knowledge_Representation.organize_data(AssetLoader.read_data())
+        past_conversation = "\n".join([f"{msg['role']}: {msg['content']}" for msg in st.session_state["messages"]])
+        context = past_conversation + "\n" + \
+                  Retr.retrieve_context(data, user_input, symb_model=Symbolic_Model(), top_k=1)[0]
+
+        system_template = AssetLoader.get_templates().get("documentation_agent", "")
+        llm = LLM()
+        llm.set_prompt(system_template, user_input, context)
+        response = llm.respond_to_prompt()
+
 
 # If no user input, but a question was selected from sidebar, use the selected question
 if not user_input and st.session_state["selected_question"]:
@@ -191,7 +329,18 @@ if user_input:
 
     st.session_state["messages"].append({"role": "assistant", "content": response})
 
-# Display chat messages
+
+
 for msg in st.session_state["messages"]:
-    with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
+    if msg["role"] == "user":
+        st.markdown(
+            f"<div class='user-bubble'><img src='https://cdn-icons-png.flaticon.com/512/747/747545.png' />{msg['content']}</div>",
+            unsafe_allow_html=True
+        )
+    else:
+        st.markdown(
+            f"<div class='ai-bubble'><img src='https://cdn-icons-png.freepik.com/512/6783/6783338.png' /><strong>MTSS Copilot</strong>: {msg['content']}</div>",
+            unsafe_allow_html=True
+        )
+
+st.write('</div>', unsafe_allow_html=True)

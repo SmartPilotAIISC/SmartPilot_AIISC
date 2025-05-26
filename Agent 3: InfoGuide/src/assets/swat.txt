@@ -1,0 +1,103 @@
+Secure Water Treatment Dataset
+
+Cyber Physical Systems(CPSs) are built by integrating computational algorithms and physical components for various mission-critical tasks. Examples of such systems include public infrastructures such as smart power grids, water treatment and distribution networks, transportation, robotics and autonomous vehicles. These systems are typically large and geographically dispersed, hence they are being network connected for remote monitoring and control. However, such network connectivities open up the likelihood of cyber attacks. Such possibilities make it necessary to develop techniques to defend CPSs against attacks: cyber or physical. A“cyber attack” refers to an attack that is transmitted through a communications network to affect system behavior with an intention to cause some economic harm. A “physical attack” is on a physical component such as a motor or a pump to disrupt state of the system.
+Research efforts in securing CPSs from such attacks have been ongoing. However, there is limited availability of operational data sets in this research community to advance the field of securing CPSs. While there are datasets for Intrusion Detection Systems (IDS), these datasets focus primarily on network traffic. Such datasets include, for example, the DARPA Intrusion Detection Evaluation Dataset[3] and the NSL-KDD99[2] datasets. These data are a collection of RAW TCP dump collected over a period of time which includes various intrusions simulated in a military network environment. Such datasets are thus not suitable for CPS IDS. The only other publicly available datasets for CPS kown to the authors are provided by the Critical Infrastructure Protector Center at the Mississippi State University (MSU) [4]. Their datasets[4] comprise of data obtained from their Power, Gas and Water testbeds. The power dataset is based on a simulated smart grid whereas their water and gas datasets were obtained from a very small scale laboratory testbed. However, as acknowledged by the authors themselves, these datasets have been found to contain some unintended patterns that can be used to easily identify attacks versus non-attacks using machine learning algorithms. Although the gas dataset was updated in 2015[4] to provide more randomness, it was obtained from a small scale testbed which may not reflect the true complexity of CPSs. Hence, there is no publicly available realistic dataset of a sufficient complexity from a modern CPS that contains both network traffic data and physical properties of the CPS.
+The goal of this paper is to provide a realistic dataset that can be utilised to design and evaluate CPS defence mechanisms. In this paper, we present a dataset obtained from Secure Water Treatment testbed (SWaT).
+
+, SwaT is a fully operational scaled down water treatment plant with a small footprint, producing 5 gallons/minute of doubly filtered water. This testbed replicates large modern plants for water treatment such as those found in cities. Its main purpose is to enable experimentally validated research in the design of secure and safe CPS. SWaT has six main processes corresponding to the physical and control components of the water treatment facility.
+
+Water treatment process
+The process (P1) begins by taking in raw water and storing it in a tank. It is then passed through the pre-treatment process (P2). In this process, the quality of the water is assessed. Chemical dosing is performed if the water quality is not within acceptable limits. The water than reaches P3 where undesirable materials are removed using fine filtration membranes. After the residuals are filtered through the Ultra Filtration system, any remaining chorine is destroyed in the Dechlorination process (P4) using Ultraviolet lamps. Subsequently, the water from P4 is pumped into the Reverse Osmosis (RO) system (P5) to reduce inorganic impurities. In the last process, P6, water from the RO is stored and ready for distribution in a water distribution system. In the case of SWaT, the treated water can be transferred back to the raw tank for re-processing. However, for the purpose of data collection, the water from P6 is disposed to mimic water distribution.
+	2.2	Communications
+SWaT consists of a layered communication network, Programmable Logic Controllers (PLCs), Human Machine Interfaces (HMIs), a Supervisory Control and Data Acquisition (SCADA) workstation, and a Historian. Data from the sensors is available to the SCADA system and recorded by the Historian for subsequent analysis.
+As illustrated in Figure3, there are two networks in SWaT. Level 1 is a star network that allows the SCADA system to communicate with the six PLCs dedicated to each of the process. Level 0 is a ring network that transmits sensor and actuator data to the relevant PLC. The sensors, actuators and PLCs all communicate either via wired or wireless links (where manual switches allow the switch between wireless and wired modes).
+
+
+3	Attack Scenarios
+A systematic approach was used to attack the system. We used the attack model[1] that considers the intent space of an attacker for a given CPS in the attack model. This attack model can be used to generate attack procedures and functions that target a specific CPS. In our case, the attack model to target the SWaT testbed was derived. We assumed that an attacker succeeds in launching an attack. We assume that an attacker is successful in launching an attack, hence the number of possible attack scenarios is infinite.
+The attack model[1] for CPS is abstracted as a sextuple (M; G; D; P; S0; Se), where M is potentially an infinite set of procedures to launch attacks, G is a subset of a finite set of attacker intents, D is the domain model for the attacks derived from the CPS, P is a finite set of attack points, and S0 and Se are infinite sets of states of CPS, that denote, respectively, the possible start and end states of interest to the attacker. An attack point in CPS could be a physical element or an entry point through the communications network connecting sensors or actuators to the controllers (PLCs) and the SCADA system.
+From the above discussion, it is clear that the space of potential attacks is large. The massive size of the attack space arises by changing the method M, potential attack points, P, as well as the start and end state of the CPS. SWaT consists of six stages where each stage contains different number of sensors and actuators. Based on attack points in each stage, the attacks are divided into four types.
+1.	Single Stage Single Point (SSSP): A Single Stage Single Point attack focuseson exactly one point in a CPS.
+2.	Single Stage Multi Point (SSMP): A Single Stage Multiple Point attackfocuses on two or more attack points in a CPS but on only one stage. In this case set, P consists of more than one element in a CPS selected from any one stage.
+3.	Multi Stage Single Point (MSSP): A Multi Stage Single Point attack is similar to an SSMP attack except that now the SSMP attack is performed on multiple stages.
+4.	Multi Stage Multi Point (MSMP): A Multi Stage Multi Point attack is anSSMP attack performed two or more stages of the CPS.
+For a detailed description of the attacks generated, we refer the reader to the dataset website . The data collection process consisted of the following steps. Step 1: Define each attack based on the number of attack points and places. Step 2: Design each attack based on the attack point (i.e. the actuator or sensor to be affected affect), start state, type of attack, the value of the selected sensor data to be sent to the PLC, the intended impact.
+A total of 36 attacks were launched during the data collection process. The breakdown of these attacks are listed in Table1. The duration of the attack is varied based on the attack type. A few attacks, each lasting ten minutes, are performed consecutively with a gap of 10minutes between successive attacks. Some of the attacks are performed by letting the system stabilize before a subsequent attack. The duration of system stabilization varies across attacks. Some of the attacks have a stronger effect on the dynamics of system and causing more time for the system to stabilize. Simpler attacks, such as those that effect flow rates, require less time to stabilize. Also, some attacks do not take effect immediately.
+Attack Category	Number of attacks
+SSSP	26
+SSMP	4
+MSSP	2
+MSMP	4
+Table 1: Number of attacks per category
+	4	Data collection process
+The data collection process lasted for a total of 11 days. SWaT was functioning non-stop 24 hours/day, during the entire 11-day period. SWaT was run without any attacks during the first seven of the 11-days. Attacks were launched during the remaining four days. Various attack scenarios, discussed in Section3, were implemented on the testbed. These attacks were of various intents and lasted between a few minutes to an hour. Depending on the attack scenario, the system was either allowed to reach its normal operating state before another attack was launched or the attacks were launched consecutively.
+The following assumptions ere made during the data collection process.
+1.	The system will stabilise and reach its operation state within the first sevendays of normal operation.
+2.	Data is recorded once every second assuming that no significant attack onthe SWaT testbed can be launched in less than one second.
+3.	The PLC firmware does not change.
+All tanks in SWaT were emptied prior to starting data collection; i.e. the data collection process starts from an empty state of SWaT. This initialization was deemed necessary to ensure that all the tanks are filled with unfiltered water and not pre-treated.
+	4.1	Physical Properties
+All the data was logged continuously once every second into a Historian server. Data recorded in the Historian was obtained from the sensors and actuators of the testbed. Sensors are devices that convert a physical parameter into an electronic output, i.e. an electronic value whereas actuators are devices that convert a signal into a physical output, i.e. turning the pump off or on.
+The dataset describes the physical properties of the testbed in operational mode. In total, 946,722 samples comprising of 51 attributes were collected over 11 days. Data capturing the physical properties can be used for profiling cyberattacks. Table2 describes the different sensors and actuators in SWaT that served as source of the data.
+As the data collection process started from an empty state, it tool about about 5 hours for SWaT to stablise. Figure4(a) indicates a steady flow of water into the tank in P1 (the level of tank is reported by sensor LIT101). Figure4(b) shows that it took approximately 5 hours for the tank to fill up and reach its operational state. For the tanks in stages P3 and P4 (level of tank reported by sensor LIT301 and LIT401 respectively), it took approximately 6 hours for the tanks to be filled up. This is because the water from P1 is sent to P2 for chemical dosing before it reaches P3, hence an additional hour is needed to fill up the tank. The water from P3 is subsequently sent to P4 for reverse osmosis.
+Figures5(a) and5(b) illustrate consequences of cyber attacks. Figure5(a) illustrates a disturbance in the usual cycle of the reading from sensor LIT101 during 6:30 pm and 6:42 pm This was an SSSP attack with the intention of overflowing the tank by shutting pump P101 off and manipulating the value of LIT101 to be at 700mm for 12 minutes. The effects are immediately observed over the next hour before the data stabilised nearly two hours later. Similarly Figure5(b) shows the consequence of an SSSP attack with the intention to underflow the tank and damage pump P101. In this attack sensor LIT-301 was attacked between 12.08pm and 12.15pm to increase the sensor level to 1100mm. This deceives the PLC to think that there is an over supply of water and turns the pump on to supply water to P4. In reality, the water level falls below the low mark while the pump is still active. Given sufficient time, this attack can cause the tank in P3 to underflow t, thus stagnating the output of the plant and damaging the pumps.
+	4.2	Network Traffic
+Network traffic was collected using commercially available equipment from Check Point R Software Technologies Ltd . This equipment was installed in the SWaT testbed. The use case of the equipment was specifically to collect all the network traffic for analysis. However, for the purpose of data collection, we retrieved
+
+below are the sensors in SWAT testbed, their types and description of what they are performing
+N	o.Name	Type	Description
+1	FIT101:	Sensor	Flow meter; Measures inflow into raw water tank.
+2	LIT101	:Sensor	Level Transmitter; Raw water tank level.
+3	MV101:	Actuator	Motorized valve; Controls water flow to the raw water tank.
+4	P101:	Actuator	Pump; Pumps water from raw water tank to second stage.
+5	P102 (backup):	Actuator	Pump; Pumps water from raw water tank to second stage.
+6	AIT201:	Sensor	Conductivity analyser; Measures NaCl level.
+7	AIT202	:Sensor	pH analyser; Measures HCl level.
+8	AIT203:	Sensor	ORP analyser; Measures NaOCl level.
+9	FIT201:	Sensor	Flow Transmitter; Control dosing pumps.
+10	MV201	:Actuator	Motorized valve; Controls water flow to the UF feed water tank.
+11	P201:	Actuator	Dosing pump; NaCl dosing pump.
+12	P202 :(backup)	Actuator	Dosing pump; NaCl dosing pump.
+13	P203	:Actuator	Dosing pump; HCl dosing pump.
+14	P204 :(backup)	Actuator	Dosing pump; HCl dosing pump.
+15	P205	:Actuator	Dosing pump; NaOCl dosing pump.
+16	P206 :(backup)	Actuator	Dosing pump; NaOCl dosing pump.
+17	DPIT301	:Sensor	Differential pressure indicating transmitter; Controls the backwash process.
+18	FIT301	:Sensor	Flow meter; Measures the flow of water in the UF stage.
+19	LIT301	:Sensor	Level Transmitter; UF feed water tank level.
+20	MV301	:Actuator	Motorized Valve; Controls UF-Backwash process.
+21	MV302	:Actuator	Motorized Valve; Controls water from UF process to De-
+Chlorination unit.
+22	MV303	:Actuator	Motorized Valve; Controls UF-Backwash drain.
+23	MV304	:Actuator	Motorized Valve; Controls UF drain.
+24	P301 (backup)	:Actuator	UF feed Pump; Pumps water from UF feed water tank to RO feed water tank via UF filtration.
+25	P302	:Actuator	UF feed Pump; Pumps water from UF feed water tank to RO feed water tank via UF filtration.
+26	AIT401	:Sensor	RO hardness meter of water.
+27	AIT402	:Sensor	ORP meter; Controls the NaHSO3dosing(P203), NaOCl dosing (P205).
+28	FIT401	:Sensor	Flow Transmitter ; Controls the UV dechlorinator.
+29	LIT401	:Actuator	Level Transmitter; RO feed water tank level.
+30	P401 (backup)	:Actuator	Pump; Pumps water from RO feed tank to UV dechlorinator.
+31	P402	:Actuator	Pump; Pumps water from RO feed tank to UV dechlorinator.
+32	P403	:Actuator	Sodium bi-sulphate pump.
+33	P404 (backup)	Actuator	Sodium bi-sulphate pump.
+34	UV401	:Actuator	Dechlorinator; Removes chlorine from water.
+35	AIT501	:Sensor	RO pH analyser; Measures HCl level.
+36	AIT502	:Sensor	RO feed ORP analyser; Measures NaOCl level.
+37	AIT503	:Sensor	RO feed conductivity analyser; Measures NaCl level.
+38	AIT504	:Sensor	RO permeate conductivity analyser; Measures NaCl level.
+39	FIT501	:Sensor	Flow meter; RO membrane inlet flow meter.
+40	FIT502	:Sensor	Flow meter; RO Permeate flow meter.
+41	FIT503	:Sensor	Flow meter; RO Reject flow meter.
+42	FIT504	:Sensor	Flow meter; RO re-circulation flow meter.
+43	P501	:Actuator	Pump; Pumps dechlorinated water to RO.
+44	P502 (backup)	:Actuator	Pump; Pumps dechlorinated water to RO.
+45	PIT501	:Sensor	Pressure meter; RO feed pressure.
+46	PIT502	:Sensor	Pressure meter; RO permeate pressure.
+47	PIT503	:Sensor	Pressure meter;RO reject pressure.
+48	FIT601	:Sensor	Flow meter; UF Backwash flow meter.
+49	P601	:Actuator	Pump; Pumps water from RO permeate tank to raw water tank (not used for data collection).
+50	P602	:Actuator	Pump; Pumps water from UF back wash tank to UF filter to clean the membrane.
+51	P603	:Actuator	Not implemented in SWaT yet.
+
+
+

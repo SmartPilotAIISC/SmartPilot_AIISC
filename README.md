@@ -17,7 +17,7 @@ To run the chatbot with Front-End
 ```
 cd Agent 3: InfoGuide/src
 
-streamlit run agent_run.py
+streamlit run run_updated.py
 ```
 
 ## Core System Framework: Key Components and Technical Features of the SmartPilot Platform

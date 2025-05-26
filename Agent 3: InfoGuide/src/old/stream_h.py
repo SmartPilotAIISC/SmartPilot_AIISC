@@ -6,6 +6,7 @@ from assets.DataUtils import AssetLoader
 from copilots.Memory_Utils import Knowledge_Representation, Retr, Symbolic_Model
 from copilots.Agents import LLM
 import pandas as pd
+from pathlib import Path
 
 
 class MTSS_Copilot:
@@ -17,18 +18,27 @@ class MTSS_Copilot:
 
     @staticmethod
     def load_anomaly_prediction_model():
-        model_checkpoint = '/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Models/final_best_model_PredictX'
-        tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
+        # Base path to the project root (SmartPilot)
+        base_path = Path(__file__).resolve().parent.parent.parent
 
-        df = pd.read_excel(
-            '/Users/chathurangishyalika/Custom_Compact_Copilot/SmartPilot/Agent 3: InfoGuide/src/LLM_FT_dataset.csv')  # Update path as necessary
+        # Path to model checkpoint
+        model_checkpoint = base_path / "Models" / "final_best_model_PredictX"
 
+        # Load tokenizer
+        tokenizer = AutoTokenizer.from_pretrained(str(model_checkpoint))
+
+        # Path to dataset
+        dataset_path = base_path / "Agent 3: InfoGuide" / "src" / "LLM_FT_dataset.csv"
+        df = pd.read_excel(dataset_path)
+
+        # Label mappings
         unique_labels = df['predicted_label'].unique().tolist()
         id2label = {i: label for i, label in enumerate(unique_labels)}
         label2id = {label: i for i, label in enumerate(unique_labels)}
 
+        # Load model
         model = AutoModelForSequenceClassification.from_pretrained(
-            model_checkpoint,
+            str(model_checkpoint),
             num_labels=len(unique_labels),
             id2label=id2label,
             label2id=label2id

@@ -1,0 +1,139 @@
+CausalLens: SmartPilot Causal Agent
+1 Overview
+The Causal Agent in the SmartPilot system is a robust module designed for discovering,
+validating, and utilizing causal relationships among variables in industrial manufacturing
+datasets. This component is central to enabling counterfactual reasoning, explainability,
+and root cause analysis (RCA) in an intelligent co-pilot framework. The agent integrates
+machine learning, causal inference, and symbolic reasoning to support critical decision-
+making processes.
+SmartPilot’s causal capabilities are powered by:
+• LiNGAM (Linear Non-Gaussian Acyclic Model)
+• DiffAN (Differentiable Causal Discovery with Attention)
+• Bootstrapped Stability Analysis
+• Counterfactual Evaluation using Observational Data
+• Interactive Graph Construction and Modification
+These methods are tied into a user-facing Streamlit interface that supports intuitive
+data uploads, feature selection, and causal graph interaction.
+2 Algorithms and Methods
+2.1 DirectLiNGAM
+DirectLiNGAM is a linear, non-Gaussian, and acyclic causal discovery algorithm. It
+learns a Directed Acyclic Graph (DAG) by identifying a causal ordering of variables.
+Procedure:
+1. Input: Data matrix X ∈Rn×d
+2. Assumptions:
+• Linear SEM: Xj= i<j bjiXi + ej
+• ej are non-Gaussian and independent
+3. Output: Adjacency matrix A encoding bji
+2.2 DiffAN
+DiffAN (Differentiable Causal Discovery with Attention and Normalization) is a deep
+learning-based method for causal structure learning using attention maps.
+Procedure:
+1. Input: Dataset with selected variables
+2. Architecture:
+• Learns soft attention weights between variable pairs
+• Applies edge normalization and regularization
+• Generates causal matrix via differentiable optimization
+3. Output: Directed graph with weighted edges
+2.3 Bootstrapped Stability Analysis
+To evaluate causal edge robustness, SmartPilot runs bootstrapped DirectLiNGAM on
+resampled data.
+Procedure:
+1. Sample the dataset B times with replacement
+2. Run DirectLiNGAM on each sample
+3. Record edge weights w(b)
+ij
+4. Compute:
+µij=
+B w(b)
+ij , σij , sij=
+1
+1 + σij
+2.4 Counterfactual Evaluation
+SmartPilot provides empirical validation for causal predictions using observational data.
+Procedure:
+• Given A→B with total effect θ
+• Choose a1, a2 (quantiles)
+ˆ
+• Predict change:
+∆B = θ·(a2−a1)
+• Observe: ∆B = E[B|A≈a2]−E[B|A≈a1]
+3 Integration with SmartPilot UI
+3.1 Causal Discovery Interface
+• Upload dataset and select features
+• Run LiNGAM and DiffAN with dynamically generated scripts
+• Add/remove nodes and edges interactively
+3.2 Causal Graph Visualization
+Rendered with PyVis:
+• Tooltips from ontology/KG
+• Edge weights from bootstrap/counterfactual evaluation
+3.3 Natural Language Querying
+Supports queries like:
+• “What is the strongest cause of X?”
+• “Does A cause B?”
+• “If A were set to 10, what happens to B?”
+• “What are the parents of Y?”
+4 Root Cause Analysis (RCA) Integration
+4.1 Anomaly Linkage
+• Anomaly predictions trigger RCA
+• Sensor anomalies identified using per-cycle tolerance ranges
+4.2 RCA Method
+• Trace causal paths from anomalies to sensors using total effects
+• Output strength-ranked root causes
+4.3 RCA Query Support
+• “What is the most likely root cause of variable B?”
+• “Is A a likely root cause of B?”
+• “Why is D not a likely root cause of B?”
+5 Semantic Integration
+5.1 Ontology Enhancement
+• Turtle-based RDF graphs used to extract type/unit relationships
+• Used to annotate nodes with semantic metadata
+5.2 Natural Language Enrichment
+Enables queries like:
+• “What is the function of Robot 3?”
+• “What is the range of sensor I R04 Temp?”
+6 Evaluation
+6.1 Bootstrapping Metrics
+• Mean strength
+• Std deviation
+• Stability score sij
+6.2 Counterfactual Metrics
+• Predicted vs observed effect
+• Absolute error |∆−
+ˆ
+∆|
+• Error heatmaps
+6.3 RCA Metrics
+• Cause frequency
+• Average causal strength
+• RCA precision per anomaly type
+6.4 Causal AI Agent:Competency Questionnaire
+Given causal graph G= {(A→B),(B →C),(D→B)}
+6.4.1 Questions about Causal Graph Structure
+• Does A cause B?
+• Does B cause A?
+•  Does A cause C?
+•  Is there a causal relation between A and B (or between B and A)?
+•  Is there a causal relation between A and D?
+•  What variables have a direct causal effect on B (i.e., causal parents of B)?
+•  Is there a causal relation between A and Z?
+6.4.2 Questions about Causal Reasoning
+•  What is the strength of the causal relation between A and B?
+•  Which variable has the strongest causal effect on B?
+•  If the value of A were set to ⟨some number⟩, what would be the effect on B?
+6.4.3 Questions about Root Cause Analysis
+•  What is the most likely root cause of the anomalous value of variable B?
+•  What are the 3 most likely root causes of the anomalous value of variable B, ranked
+in descending order?
+•  Is A a likely root cause of the anomalous value of variable B?
+•  Which is more likely to be the root cause, A or D?
+•  Why is D not considered a likely root cause of the anomalous value of variable B?
+6.4.4 Questions about Causal Discovery
+•  Questions about causal discovery algorithms
+7 Conclusion
+The Causal Agent in SmartPilot transforms raw manufacturing data into actionable
+causal knowledge. By unifying statistical discovery (LiNGAM, DiffAN), empirical vali-
+dation (counterfactuals), and symbolic explanation (ontology), it enables industrial stake-
+holders to understand, validate, and reason about production anomalies and dependencies
+in a trustworthy, explainable, and interactive way.
+This modular design empowers researchers and engineers to extend, evaluate, and
+interact with causal knowledge at multiple levels of abstraction.

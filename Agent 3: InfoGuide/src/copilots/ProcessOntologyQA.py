@@ -155,7 +155,8 @@ class ProcessOntologyQA:
                 f"📈 Sensor Value `{sensor_name}`:\n"
                 f"- Description: {node.get('description', 'No description')}\n"
                 f"- Min: {node.get('min_value', 'N/A')}, Max: {node.get('max_value', 'N/A')}\n"
-                f"- Unit: {node.get('unit', 'N/A')}"
+                f"- Unit: {node.get('unit', 'N/A')}\n"
+                f"- Type: {node.get('value_type', 'N/A')}"
             )
         else:
             return None
@@ -167,7 +168,8 @@ class ProcessOntologyQA:
         node = self.node_map[value_id]
         return (
             f"📏 `{sensor_value_name}` range: {node.get('min_value', 'NA')} to {node.get('max_value', 'NA')} "
-            f"(Unit: {node.get('unit', 'N/A')})"
+            f"(Unit: {node.get('unit', 'N/A')}) "
+            f"(Type: {node.get('value_type', 'N/A')})"
         )
 
     def trace_robot_to_sensor_value(self, robot_name):

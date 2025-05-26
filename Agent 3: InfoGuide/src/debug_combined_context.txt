@@ -1,0 +1,137 @@
+
+
+t:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R02_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R02_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R02_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R02_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R02_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R02_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R02_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R02_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R02_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R02_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R03_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R03_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Load:
+📏 Tolerance Range: 1700 to 10300 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+I_R04_Gripper_Pot:
+📏 Tolerance Range: 1900 to 12000 (Unit: x)
+
+---
+📚 Memory Context:
+🕓 Recent Causal Graphs:
+- Features: I_R03_Gripper_Pot,I_R03_Gripper_Load, I_R02_Gripper_Pot,I_R02_Gripper_Load, I_R01_Gripper_Pot,I_R01_Gripper_Load, I_R04_Gripper_Pot, I_R04_Gripper_Load
+
+- Features: I_R03_Gripper_Pot,I_R03_Gripper_Load, I_R02_Gripper_Pot,I_R02_Gripper_Load, I_R01_Gripper_Pot,I_R01_Gripper_Load, I_R04_Gripper_Pot, I_R04_Gripper_Load
+
+- Features: I_R03_Gripper_Pot,I_R03_Gripper_Load, I_R02_Gripper_Pot,I_R02_Gripper_Load, I_R01_Gripper_Pot,I_R01_Gripper_Load, I_R04_Gripper_Pot, I_R04_Gripper_Load
+
+
+---
+📚 Memory Context:
+🕓 Recent Causal Graphs:
+- Features: I_R03_Gripper_Pot,I_R03_Gripper_Load, I_R02_Gripper_Pot,I_R02_Gripper_Load, I_R01_Gripper_Pot,I_R01_Gripper_Load, I_R04_Gripper_Pot, I_R04_Gripper_Load
+
+- Features: I_R03_Gripper_Pot,I_R03_Gripper_Load, I_R02_Gripper_Pot,I_R02_Gripper_Load, I_R01_Gripper_Pot,I_R01_Gripper_Load, I_R04_Gripper_Pot, I_R04_Gripper_Load
+
+- Features: I_R03_Gripper_Pot,I_R03_Gripper_Load, I_R02_Gripper_Pot,I_R02_Gripper_Load, I_R01_Gripper_Pot,I_R01_Gripper_Load, I_R04_Gripper_Pot, I_R04_Gripper_Load

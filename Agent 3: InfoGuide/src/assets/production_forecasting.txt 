@@ -1,0 +1,80 @@
+The dataset utilized in this study originates
+from the yeast evaporation stage of Vegemite
+production at an industrial food processing facility in Australia, representing a real-world
+digital manufacturing environment [1], [2]. It
+comprises approximately [INSERT number of
+rows] time-stamped records collected over a
+six-month period, encapsulating a wide array
+of machine sensor readings and machine setting parameters. Data were recorded at regular
+intervals consistent with the dynamics of yeast
+batch production, capturing the complex interdependencies between process operations and
+final product quality.
+Each production run aimed to transform raw
+yeast into a yeast paste with a target concentration of total solids, a critical quality metric
+assessed offline via refractometry [1]. The manufacturing process involved monitoring evaporator operations, where machine settings such as flow rate, pressure, and feed rates were manually or semi-automatically adjusted to maintain product quality within strict specification
+limits. Raw material variability—particularly
+variations in yeast types and their initial solids
+content—introduced significant challenges to
+process consistency, necessitating adaptive control strategies informed by both sensor data and
+operational expertise [2].
+The dataset incorporates critical process
+variables such as VMBX - Auto Yield,
+VMBX - Auto Feed, VYA - Papain
+added, VYA - Final Volume, VFX -
+Feed SS, and VMBX - Res IS/TS (%),
+among others. These variables are directly
+related to key control points in the evaporation
+process, influencing evaporation rates, solids
+concentration, enzymatic activity, and final
+product consistency [1].
+Comprehensive preprocessing was essential
+to ensure data integrity and facilitate effective
+model training. Missing values, which arose
+primarily due to occasional sensor faults or
+downtime events, were treated using forwardfill imputation methods that preserved the temporal sequence of production dynamics. For
+more persistent missing segments, domaininformed interpolation techniques were applied
+when physically plausible; otherwise, the affected variables were excluded to prevent introducing artifacts.
+Outlier detection was performed using a
+combination of statistical techniques (e.g., interquartile range analysis) and expert validation
+to eliminate aberrant readings caused by sensor
+drift, calibration errors, or production anomalies. Chronological alignment checks ensured
+the correct sequencing of events across production runs, a crucial requirement for recurrent
+neural network models such as Long ShortTerm Memory (LSTM) networks.
+Feature scaling was performed using MinMax normalization, rescaling all numerical
+variables into the [0, 1] interval. This approach
+was selected over z-score standardization due to
+the enhanced convergence properties observed
+during preliminary LSTM model tuning, consistent with best practices in time-series forecasting where the amplitude of signals influences memory cell dynamics [2].
+To augment temporal feature richness, additional lag features and rolling mean statistics
+were engineered for selected variables, capturing short-term trends and smoothing stochastic
+fluctuations inherent to industrial fermentation
+systems. These engineered features enhanced
+the models’ ability to recognize process states
+evolving over time, thereby improving forecast
+accuracy.
+A pivotal distinction between the standard
+and knowledge-infused LSTM models lies in
+the strategic prioritization of input features.
+For the standard Long Short-Term Memory
+(LSTM) model, the complete set of available
+variables was utilized without explicit prioritization, allowing the network to learn feature
+relevance autonomously.
+Conversely, for the knowledge-infused
+LSTM model, domain expertise was
+systematically incorporated to enrich the input
+representation. After thorough consultations
+and operational analyses, six variables were
+identified as crucial: VMBX - Auto Yield,
+VMBX - Auto Feed, VYA - Papain
+added, VYA - Final Volume, VFX
+- Feed SS, and VMBX - Res IS/TS
+(%) [1], [2]. These variables reflect key control
+levers for achieving targeted evaporation and
+concentration dynamics critical to yeast paste
+production quality.
+By integrating such expert-selected features,
+the knowledge-infused LSTM model sought
+to allocate greater representational capacity to
+physiochemically significant variables, thereby
+enhancing forecasting precision and supporting
+interpretable, domain-aligned model behavior.
