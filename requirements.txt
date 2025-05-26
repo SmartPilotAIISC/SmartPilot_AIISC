@@ -8,7 +8,7 @@ evaluate
 flair==0.13.1
 git+https://github.com/tomsons22/trustworthyAI.git@c2e3535eba28cabf8e1309f55bffc3e4d4d78c00#subdirectory=gcastle
 groq==0.8.0
-keras==3.4.1
+keras==3.1.0
 nltk==3.8.1
 numpy
 pandas
@@ -23,7 +23,7 @@ rouge==1.0.1
 rouge-score==0.1.2
 scikit-learn
 seaborn
-streamlit
-tensorflow==2.16.2
+streamlit==1.25.0
+tensorflow==2.15.0
 torch==2.2.2
 transformers
