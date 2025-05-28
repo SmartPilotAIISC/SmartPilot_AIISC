@@ -6,7 +6,8 @@ scikit-learn
 Pillow
 transformers
 tensorflow==2.16.2
-keras==3.4.1
+tf-keras
+keras<3
 efficientnet_pytorch==0.7.1
 flair==0.13.1
 distro==1.9.0
