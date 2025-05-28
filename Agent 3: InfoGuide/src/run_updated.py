@@ -1,4 +1,8 @@
 import streamlit as st
+st.set_page_config(
+    page_title="SmartPilot",
+    page_icon="🤖"
+)
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from assets.DataUtils import AssetLoader
