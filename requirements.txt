@@ -27,3 +27,6 @@ git+https://github.com/SmartPilotAIISC/trustworthyAI.git@master#subdirectory=gca
 cdt
 seaborn
 rdflib
+sentence-transformers
+matplotlib
+networkx
