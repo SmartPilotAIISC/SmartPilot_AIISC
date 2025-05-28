@@ -36,7 +36,10 @@ if "context" not in st.session_state:
 
 @st.cache_resource
 def load_embedding_model():
-    return SentenceTransformer("all-MiniLM-L6-v2")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    model.to(device)
+    return model
 
 
 embedder = load_embedding_model()
