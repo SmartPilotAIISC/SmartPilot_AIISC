@@ -71,12 +71,19 @@ def load_lingam_total_effects():
 total_effects, node_labels_te = load_lingam_total_effects()
 
 
+# @st.cache_resource
+# def load_knowledge_graph():
+#     g = Graph()
+#     g.parse("assets/Analog24HrRunKG_Demo_New.ttl", format="turtle")
+#     return g
+
 @st.cache_resource
 def load_knowledge_graph():
     g = Graph()
-    g.parse("assets/Analog24HrRunKG_Demo_New.ttl", format="turtle")
+    current_dir = os.path.dirname(__file__)
+    ttl_path = os.path.join(current_dir, "assets", "Analog24HrRunKG_Demo_New.ttl")
+    g.parse(ttl_path, format="turtle")
     return g
-
 
 # Namespaces
 ns = {
