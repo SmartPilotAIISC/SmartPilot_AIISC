@@ -88,10 +88,14 @@ ns = {
     "rparts": Namespace("http://purl.org/ieee1872-owl/rParts/")
 }
 
-if "ProcessOntologyQa" not in st.session_state:
-    st.session_state["ProcessOntologyQa"] = ProcessOntologyQA(
-        "assets/d3_graph.json")
+# if "ProcessOntologyQa" not in st.session_state:
+#     st.session_state["ProcessOntologyQa"] = ProcessOntologyQA(
+#         "assets/d3_graph.json")
 
+if "ProcessOntologyQa" not in st.session_state:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    graph_path = os.path.join(current_dir, "assets", "d3_graph.json")
+    st.session_state["ProcessOntologyQa"] = ProcessOntologyQA(graph_path)
 
 def get_full_entity_semantic_info(entity_name: str, ontology_json: dict):
     # nodes, edges = extract_neo4j_data()
