@@ -21,6 +21,7 @@ datasets
 evaluate
 peft
 streamlit
+openpyxl
 pyvis
 causal-learn
 git+https://github.com/SmartPilotAIISC/trustworthyAI.git@master#subdirectory=gcastle
