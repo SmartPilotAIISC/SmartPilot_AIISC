@@ -670,7 +670,7 @@ if "causal_eval_results" not in st.session_state:
 def load_anomaly_prediction_model():
     model_checkpoint = os.path.join(os.path.dirname(__file__), "..", "..", "Models", "final_best_model_PredictX")
     tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
-    df = pd.read_csv('./LLM_FT_dataset.csv')
+    df = pd.read_csv('/app/Agent 3: InfoGuide/src/LLM_FT_dataset.csv')
     unique_labels = df['predicted_label'].unique().tolist()
     id2label = {i: label for i, label in enumerate(unique_labels)}
     label2id = {label: i for i, label in enumerate(unique_labels)}
