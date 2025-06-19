@@ -48,7 +48,7 @@ embedder = load_embedding_model()
 @st.cache_data
 def load_lingam_matrix():
     try:
-        with open("lingam_adjacency_matrix.pkl", "rb") as f:
+        with open("/app/Agent 3: InfoGuide/src/lingam_adjacency_matrix.pkl", "rb") as f:
             adj_matrix, node_labels = pickle.load(f)
         return adj_matrix, node_labels
     except Exception:
@@ -61,7 +61,7 @@ adj_matrix, node_labels = load_lingam_matrix()
 @st.cache_data
 def load_lingam_total_effects():
     try:
-        with open("lingam_total_effects.pkl", "rb") as f:
+        with open("/app/Agent 3: InfoGuide/src/lingam_total_effects.pkl", "rb") as f:
             total_effects, node_labels = pickle.load(f)
         return total_effects, node_labels
     except Exception:
@@ -879,7 +879,7 @@ def render_filtered_causal_graph(df_results, error_threshold=20.0):
     # Update the global session state used by "Updated Causal Graph with Custom Edges"
     st.session_state["lingam_edges"] = [(row["A (Cause)"], row["B (Effect)"]) for _, row in df_results.iterrows() if
                                         row["Error (|Δ|)"] <= error_threshold]
-    with open("lingam_graph_edges.pkl", "wb") as f:
+    with open("/app/Agent 3: InfoGuide/src/lingam_graph_edges.pkl", "wb") as f:
         import pickle
         pickle.dump(st.session_state["lingam_edges"], f)
 
@@ -954,7 +954,7 @@ def run_lingam():
 
     os.system(f"python {modified_lingam_script}")
 
-    lingam_edges_path = "lingam_graph_edges.pkl"
+    lingam_edges_path = "/app/Agent 3: InfoGuide/src/lingam_graph_edges.pkl"
     if os.path.exists(lingam_edges_path):
         with open(lingam_edges_path, "rb") as f:
             original_edges = list(pickle.load(f))
@@ -1020,7 +1020,7 @@ def run_lingam():
                 st.session_state["lingam_edges"].append(new_edge)
 
                 # 🔽 SAVE updated edges to disk
-                with open("lingam_graph_edges.pkl", "wb") as f:
+                with open("/app/Agent 3: InfoGuide/src/lingam_graph_edges.pkl", "wb") as f:
                     pickle.dump(st.session_state["lingam_edges"], f)
 
                 st.success(f"✅ Edge added: {source_node.strip()} ➝ {target_node.strip()}")
