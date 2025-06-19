@@ -675,7 +675,7 @@ def load_anomaly_prediction_model():
     id2label = {i: label for i, label in enumerate(unique_labels)}
     label2id = {label: i for i, label in enumerate(unique_labels)}
     model = AutoModelForSequenceClassification.from_pretrained(
-        model_checkpoint, num_labels=len(unique_labels), id2label=id2label, label2id=label2id
+        model_checkpoint, num_labels=len(unique_labels), id2label=id2label, label2id=label2id, device_map="cpu"
     )
     return tokenizer, model, id2label
 
@@ -700,7 +700,7 @@ def load_prod_forecasting_model():
     id2label_f = {i: label for i, label in enumerate(unique_labels_f)}
     label2id_f = {label: i for i, label in enumerate(unique_labels_f)}
     model_f = AutoModelForSequenceClassification.from_pretrained(
-        model_checkpoint, num_labels=len(unique_labels_f), id2label=id2label_f, label2id=label2id_f
+        model_checkpoint, num_labels=len(unique_labels_f), id2label=id2label_f, label2id=label2id_f, device_map="cpu"
     )
     return tokenizer_f, model_f, id2label_f
 
