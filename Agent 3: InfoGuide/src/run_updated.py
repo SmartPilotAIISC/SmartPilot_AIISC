@@ -695,7 +695,7 @@ def get_anomaly_prediction(tokenizer, model, id2label, user_query, time_series_d
 def load_prod_forecasting_model():
     model_checkpoint = os.path.join(os.path.dirname(__file__), "..", "..", "Models", "final_finetuned_model_ForeSight")
     tokenizer_f = AutoTokenizer.from_pretrained(model_checkpoint)
-    df = pd.read_json('./fine_tune_data_foresight.json')
+    df = pd.read_json('/app/Agent 3: InfoGuide/src/fine_tune_data_foresight.json')
     unique_labels_f = df['completion'].unique().tolist()
     id2label_f = {i: label for i, label in enumerate(unique_labels_f)}
     label2id_f = {label: i for i, label in enumerate(unique_labels_f)}
