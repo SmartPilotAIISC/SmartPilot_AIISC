@@ -5,7 +5,7 @@ numpy
 scikit-learn
 Pillow
 transformers
-tensorflow==2.11.1
+tensorflow==2.14.0
 keras<3
 efficientnet_pytorch==0.7.1
 flair==0.13.1
@@ -20,8 +20,7 @@ beautifulsoup4==4.12.3
 datasets
 evaluate
 peft
-streamlit
-openpyxl
+streamlit==1.45.1
 pyvis
 causal-learn
 git+https://github.com/SmartPilotAIISC/trustworthyAI.git@master#subdirectory=gcastle
@@ -31,3 +30,4 @@ rdflib
 sentence-transformers
 matplotlib
 networkx
+openpyxl
