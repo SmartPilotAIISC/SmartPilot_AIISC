@@ -13,7 +13,7 @@ def main():
 
     start = time.time()
     logging.info("Loading adapter...")
-    model = PeftModel.from_pretrained(base_model, "../../Models/final_finetuned_model_ForeSight")
+    model = PeftModel.from_pretrained(base_model, "content/final_finetuned_model")
     logging.info(f"Adapter loaded in {time.time() - start:.2f}s")
 
     tokenizer = AutoTokenizer.from_pretrained("t5-small")
