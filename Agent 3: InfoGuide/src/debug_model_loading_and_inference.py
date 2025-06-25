@@ -1,7 +1,7 @@
 import time
 import logging
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-from peft import PeftModel, PeftConfig
+from peft import PeftModelForSeq2SeqLM
 
 logging.basicConfig(level=logging.INFO)
 
@@ -13,7 +13,7 @@ def main():
 
     start = time.time()
     logging.info("Loading adapter...")
-    model = PeftModel.from_pretrained(base_model, "content/final_finetuned_model")
+    model = PeftModelForSeq2SeqLM.from_pretrained(base_model, "content/final_finetuned_model")
     logging.info(f"Adapter loaded in {time.time() - start:.2f}s")
 
     tokenizer = AutoTokenizer.from_pretrained("t5-small")
