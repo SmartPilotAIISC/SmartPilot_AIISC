@@ -10,7 +10,7 @@ keras<3
 efficientnet_pytorch==0.7.1
 flair==0.13.1
 distro==1.9.0
-groq==0.8.0
+groq==0.7.0
 python-decouple==3.8
 rouge==1.0.1
 rouge-score==0.1.2
